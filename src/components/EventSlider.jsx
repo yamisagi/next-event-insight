@@ -12,7 +12,7 @@ const EventSlider = () => {
         effect={'cards'}
         grabCursor={true}
         modules={[EffectCards]}
-        className='flex flex-col justify-center items-center w-6/12 h-96 '
+        className='flex flex-col justify-center items-center w-9/12 sm:w-6/12 h-96 '
       >
         <SwiperSlide
           className='bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg'
