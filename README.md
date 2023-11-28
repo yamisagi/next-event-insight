@@ -67,6 +67,7 @@
 
 - [x] Project Setup
 - [x] Clean up the project
+- [x] Create the Layout component & Navbar component
 
 
 <p align="center">(Still working on it...)</p>

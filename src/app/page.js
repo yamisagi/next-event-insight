@@ -1,12 +1,13 @@
-import Navbar from '@/components/Navbar';
+import EventCard from '@/components/EventCard';
+import EventSlider from '@/components/EventSlider';
 import React from 'react';
 
 export default function Home() {
   return (
     <main>
-      <Navbar />
-      <h1>Next Event Insight</h1>
-      <p>Next Event Insight</p>
+      <h1>Home</h1>
+      <EventSlider />
+      <EventCard />
     </main>
   );
 }

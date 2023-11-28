@@ -6,25 +6,31 @@ import {
   XMarkIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: '/' },
+  { name: 'Details', href: '/details' },
+  { name: 'Projects', href: '#' },
+  { name: 'Calendar', href: '#' },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 const Navbar = () => {
+  const [current, setCurrent] = useState('Home');
   return (
     <Disclosure as='nav' className='bg-gray-800'>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 justify-between'>
             <div className='relative flex h-16 items-center sm:justify-evenly justify-between'>
-              <div className='flex cursor-pointer text-white mr-16'>LOGO</div>
+              {/* // Logo */}
+              <div className='flex cursor-pointer text-white mr-16'>
+                <Link href='/'>Logo</Link>
+              </div>
               <div className='absolute inset-y-0 right-0 flex items-center sm:hidden'>
                 <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                   <span className='absolute -inset-0.5' />
@@ -59,19 +65,20 @@ const Navbar = () => {
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
                     {navigation.map((item) => (
-                      <a
+                      <Link
+                        onClick={() => setCurrent(item.name)}
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          current === item.name
                             ? 'bg-gray-900 text-white'
                             : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -84,15 +91,16 @@ const Navbar = () => {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as='a'
+                  onClick={() => setCurrent(item.name)}
+                  as={Link}
                   href={item.href}
                   className={classNames(
-                    item.current
+                    current === item.name
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={current ? 'page' : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
