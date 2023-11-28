@@ -4,12 +4,12 @@ import Image from 'next/image';
 const EventCard = () => {
   return (
     <div className='max-w-sm rounded overflow-hidden shadow-lg md:w-64 m-5'>
-      <Image
+      {/* <Image
         src='/img/card-top.jpg'
         alt='Sunset in the mountains'
         width={500}
         height={500}
-      />
+      /> */}
       <div className='px-6 py-4'>
         <div className='font-bold text-xl mb-2'>The Coldest Sunset</div>
         <p className='text-gray-700 text-base'>
