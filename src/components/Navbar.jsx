@@ -1,13 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { Disclosure } from '@headlessui/react';
-import {
-  Bars3Icon,
-  XMarkIcon,
-  MagnifyingGlassIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useState } from 'react';
+import SearchBar from './SearchBar';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,11 +19,11 @@ function classNames(...classes) {
 const Navbar = () => {
   const [current, setCurrent] = useState('Home');
   return (
-    <Disclosure as='nav' className='bg-gray-800'>
+    <Disclosure as='nav' className='bg-navbar'>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 justify-between'>
-            <div className='relative flex h-16 items-center sm:justify-evenly justify-between'>
+            <div className='relative flex h-16 items-center lg:justify-evenly justify-between'>
               {/* // Logo */}
               <div className='flex cursor-pointer text-white mr-16'>
                 <Link href='/'>Logo</Link>
@@ -43,25 +40,8 @@ const Navbar = () => {
                 </Disclosure.Button>
               </div>
               <div className='flex w-full mx-auto items-center sm:items-stretch sm:justify-between'>
-                <div className='sm:block sm:ml-6'>
-                  <div className='flex space-x-4'>
-                    <div className='relative'>
-                      <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                        <MagnifyingGlassIcon
-                          className='h-5 w-5 text-gray-400'
-                          aria-hidden='true'
-                        />
-                      </div>
-                      <input
-                        type='text'
-                        name='search'
-                        id='search'
-                        className='block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
-                        placeholder='Search'
-                      />
-                    </div>
-                  </div>
-                </div>
+                <SearchBar />
+                <div className='hidden sm:ml-6 sm:block'></div>
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
                     {navigation.map((item) => (
