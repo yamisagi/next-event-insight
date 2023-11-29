@@ -70,6 +70,11 @@ export const eventReducer = (state, action) => {
         ...state,
         loading: action.payload,
       };
+    case 'SET_FILTER_BAR_OPEN':
+      return {
+        ...state,
+        filterBarOpen: action.payload,
+      };
     default:
       return state;
   }

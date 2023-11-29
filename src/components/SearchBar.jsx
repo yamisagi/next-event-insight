@@ -41,7 +41,7 @@ const SearchBar = () => {
   }, [searchRef, state.events, dispatch]);
 
   return (
-    <div className='w-[160px] lg:flex flex-row justify-between sm:ml-6 place-items-center'>
+    <div className='w-[160px] flex justify-between place-items-center'>
       <div className='flex'>
         <div className='relative'>
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>

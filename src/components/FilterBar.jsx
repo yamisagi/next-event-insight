@@ -4,7 +4,7 @@ import { useEvents } from '@/context/EventsContext';
 import DatePicker from './DatePicker';
 import SelectBox from './SelectBox';
 
-const FilterBar = ({ open }) => {
+const FilterBar = () => {
   const { state, dispatch } = useEvents();
   const { isFiltered, events, filteredEvents, cities, categories } = state;
 
@@ -64,12 +64,11 @@ const FilterBar = ({ open }) => {
     setTimeout(() => {
       dispatch({ type: 'SET_SELECTED_START_DATE', payload: '' });
       dispatch({ type: 'SET_SELECTED_END_DATE', payload: '' });
-    }
-    , 5000);
+    }, 5000);
   };
   const getCityFromAddress = (address) => address.split(', ')[2];
 
-  return open ? (
+  return (
     <div
       className='bg-filterbar grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:p-8 place-items-center w-full 
     md:w-3/4 lg:w-2/3  mx-auto  md:my-4 md:rounded-md md:shadow-md 
@@ -97,7 +96,7 @@ const FilterBar = ({ open }) => {
       />
       <DatePicker
         title={'To'}
-        value={state.selectedEndDate} 
+        value={state.selectedEndDate}
         onChange={(e) => {
           dispatch({
             type: 'SET_SELECTED_END_DATE',
@@ -107,7 +106,7 @@ const FilterBar = ({ open }) => {
         }}
       />
     </div>
-  ) : null;
+  );
 };
 
 export default FilterBar;

@@ -31,6 +31,7 @@ const initialState = {
   lastDetailPage: '1',
   isFiltered: false,
   loading: true,
+  filterBarOpen: false,
 };
 
 export const EventsContext = createContext();

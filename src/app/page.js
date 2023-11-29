@@ -15,7 +15,7 @@ export default function Home() {
       {state.loading && <Spinner />}
       {!state.loading && (
         <>
-          <FilterBar open={true} />
+          {state.filterBarOpen && <FilterBar />}
           <EventSlider events={state.events} />
           <div className='container mx-auto bg-cover bg-center h-96'>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-2 mx-auto'>
