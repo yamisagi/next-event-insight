@@ -44,6 +44,21 @@ export const eventReducer = (state, action) => {
         ...state,
         lastDetailPage: action.payload,
       };
+    case 'SET_IS_FILTERED':
+      return {
+        ...state,
+        isFiltered: action.payload,
+      };
+
+    case 'CLEAR_FILTERS':
+      return {
+        ...state,
+        isFiltered: false,
+        filteredEvents: [],
+        selectedCity: '',
+        selectedCategory: '',
+        selectedDate: '',
+      };
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 'use client';
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import { eventReducer } from '@/reducer/eventReducer';
+import { data } from '@/__mocks__/data';
 
 const initialState = {
   events: [],
@@ -17,27 +18,31 @@ const initialState = {
     'Indie Town',
     'Ballet City',
     'Melody Town',
-    'Royale Town',
     'Cinema City',
-    'Salsa City',
-    'Indie Town',
     'Folk Town',
     'Modern City',
     'Futuristic City',
-    'Salsa City',
-    'Indie Town',
   ],
   categories: ['Dance', 'Concert', 'Film', 'Theater'],
   selectedCity: '',
   selectedCategory: '',
   selectedDate: '',
   lastDetailPage: '1',
+  isFiltered: false,
 };
 
 export const EventsContext = createContext();
 
 const EventsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(eventReducer, initialState);
+  useEffect(() => {
+    const fetchEvents = () => {
+      dispatch({ type: 'SET_EVENTS', payload: data });
+    };
+    fetchEvents();
+    console.log('We are fetching events');
+  }, [state.isFiltered]);
+
   return (
     <EventsContext.Provider
       value={{
