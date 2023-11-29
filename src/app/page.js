@@ -12,7 +12,7 @@ export default function Home() {
   const today = new Date();
 
   return (
-    <main>
+    <main className='flex flex-col items-center justify-center text-center'>
       {state.loading && <Spinner />}
       {!state.loading && (
         <>

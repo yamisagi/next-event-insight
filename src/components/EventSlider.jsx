@@ -12,12 +12,23 @@ const EventSlider = ({ events, isDetailed }) => {
   const router = useRouter();
   const { dispatch } = useEvents();
   return (
-    <div className='container p-3 mx-auto my-5'>
+    <div
+      className='container mx-auto my-5
+        px-14
+    '
+    >
       <Swiper
         effect={'cards'}
         grabCursor={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        centeredSlides={true}
+        centeredSlidesBounds={true}
         modules={[EffectCards]}
-        className='flex flex-col justify-center items-center w-9/12 sm:w-6/12 h-96 '
+        className='flex flex-col justify-center items-center  w-8/12 sm:w-6/12 h-96'
       >
         {events.map((event) => (
           <div key={event.id}>
@@ -26,9 +37,9 @@ const EventSlider = ({ events, isDetailed }) => {
               className='relative bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg'
               effect='cards'
               content='center'
-              onClick={() =>{
-                router.push(`/details/${event.id}`)
-                dispatch({type: 'SET_LAST_DETAIL_PAGE', payload: event.id})
+              onClick={() => {
+                router.push(`/details/${event.id}`);
+                dispatch({ type: 'SET_LAST_DETAIL_PAGE', payload: event.id });
               }}
             >
               <Image src={event.images[0]} alt='Sunset in the mountains' fill />
