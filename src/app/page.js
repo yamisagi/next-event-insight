@@ -33,17 +33,19 @@ export default function Home() {
                   })}
             </div>
             {/* Out Dated Events */}
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-2 mx-auto my-12'>
-              <h1 className='col-span-full text-2xl font-bold text-center text-black'>
-                Out Dated Events
-              </h1>
-              {state.events.map((event, index) => {
-                const eventDate = new Date(event.start_date);
-                if (eventDate < today) {
-                  return <EventCard key={index} event={event} />;
-                }
-              })}
-            </div>
+            {!state.isFiltered && (
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-2 mx-auto my-12'>
+                <h1 className='col-span-full text-2xl font-bold text-center text-black'>
+                  Out Dated Events
+                </h1>
+                {state.events.map((event, index) => {
+                  const eventDate = new Date(event.start_date);
+                  if (eventDate < today) {
+                    return <EventCard key={index} event={event} />;
+                  }
+                })}
+              </div>
+            )}
           </div>
         </>
       )}
