@@ -1,10 +1,11 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { data } from '@/__mocks__/data';
+import Spinner from '@/components/Spinner';
 
 const DynamicMap = dynamic(() => import('@/components/MapView'), {
   ssr: false,
-  loading: () => <p>A map is loading</p>,
+  loading: () => <Spinner />,
 });
 
 const DetailsPage = ({ params }) => {

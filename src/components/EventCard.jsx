@@ -14,13 +14,14 @@ const EventCard = ({ event }) => {
         router.push(`/details/${event.id}`);
       }}
     >
-      {/* // TODO: add image */}
-      {/* <Image
-        src='/img/card-top.jpg'
-        alt='Sunset in the mountains'
-        width={500}
-        height={500}
-      /> */}
+        <Image
+          src={event.images[0]}
+          alt={event.name}
+          width={200}
+          height={200}
+          content='center'
+          className='w-full h-48 object-cover'
+        />
       <div className='px-6 py-4'>
         <div className='font-bold text-xl mb-2'>{event.name}</div>
         <p className='text-gray-700 text-base'>
