@@ -2,7 +2,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const MapView = () => {
+const MapView = ({ latlong = [38.73, 35.46] }) => {
   return (
     <div
       id='map'
@@ -10,7 +10,7 @@ const MapView = () => {
     >
       <MapContainer
         className='w-full h-full rounded-lg'
-        center={[38.73, 35.46]}
+        center={latlong}
         zoom={14}
         scrollWheelZoom={true}
       >
@@ -20,7 +20,7 @@ const MapView = () => {
           detectRetina
         />
 
-        <Marker position={[38.73, 35.46]}>
+        <Marker position={latlong}>
           <Popup>Hello</Popup>
         </Marker>
       </MapContainer>
