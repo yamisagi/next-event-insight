@@ -118,7 +118,6 @@ const EventCard = ({ event }) => {
               </svg>
             </span>
           </Tooltip>
-
           <Tooltip content='Free wifi'>
             <span className='cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70'>
               <svg
@@ -138,6 +137,24 @@ const EventCard = ({ event }) => {
         </div>
       </CardBody>
       <CardFooter className='pt-3'>
+        <Typography
+          color='blue-gray'
+          className='flex items-center text-center justify-center mb-2 font-semibold gap-1.5'
+        >
+          {event.location.address.split(', ')[2]}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 24 24'
+            fill='currentColor'
+            className='-mt-0.5 h-5 w-5 text-blue-gray-300'
+          >
+            <path
+              fillRule='evenodd'
+              d='M12 2.25c4.556 0 8.25 3.694 8.25 8.25 0 4.556-3.694 8.25-8.25 8.25-4.556 0-8.25-3.694-8.25-8.25 0-4.556 3.694-8.25 8.25-8.25zm0 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zm0 3a3.75 3.75 0 110 7.5 3.75 3.75 0 010-7.5z'
+              clipRule='evenodd'
+            />
+          </svg>
+        </Typography>
         <Button
           disabled={new Date(event.start_date) < today}
           size='lg'
