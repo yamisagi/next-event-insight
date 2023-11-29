@@ -57,6 +57,10 @@
 
 <!-- add asset here later -->
 
+
+https://github.com/yamisagi/next-event-insight/assets/84624853/f1e4c752-fa70-4712-b350-311385ca8f29
+
+
  This project is a Next.js app that will show the upcoming events and the latest news about the event. I will be using the Custom API to fetch the data and display it on the app. I will be using the Tailwind CSS framework to style the app. And it is for Erciyes Bootcamp graduation project.
 
 
