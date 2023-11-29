@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import SearchBar from './SearchBar';
 import { useEvents } from '@/context/EventsContext';
+import GradientButton from './ProjectButton';
+import { useRouter } from 'next/navigation';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -17,6 +19,7 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Details', href: `/details/${state.lastDetailPage}` },
   ];
+  const router = useRouter();
   const [current, setCurrent] = useState('Home');
   return (
     <Disclosure as='nav' className='bg-navbar'>
@@ -52,37 +55,37 @@ const Navbar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div
-                className='flex flex-1 sm:ml-6 sm:items-center w-max gap-2'
-              >
-              <SearchBar />
-              <button className='bg-gray-900 text-white px-3 py-3 rounded-md text-sm font-medium'
-                onClick={() => {
-                  dispatch({ type: 'SET_FILTER_BAR_OPEN' , payload: !state.filterBarOpen});
-                }}
-              >
-                Filter
-              </button>
+              <div className='flex flex-1 sm:ml-6 sm:items-center w-max gap-2'>
+                <SearchBar />
+                <GradientButton
+                  type={'gradient'}
+                  color={'blue-gray'}
+                  text={'Filter'}
+                  onClick={() => {
+                    dispatch({
+                      type: 'SET_FILTER_BAR_OPEN',
+                      payload: !state.filterBarOpen,
+                    });
+                  }}
+                >
+                  Filter
+                </GradientButton>
               </div>
               <div className='flex w-full mx-auto items-center sm:items-stretch sm:justify-between'>
                 <div className='hidden sm:ml-6 sm:block'></div>
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
                     {navigation.map((item) => (
-                      <Link
-                        onClick={() => setCurrent(item.name)}
+                      <GradientButton
                         key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          current === item.name
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Link>
+                        type={'gradient'}
+                        color={current === item.name ? 'gray' : 'blue-gray'}
+                        text={item.name}
+                        onClick={() => {
+                          setCurrent(item.name);
+                          router.push(item.href);
+                        }}
+                      />
                     ))}
                   </div>
                 </div>

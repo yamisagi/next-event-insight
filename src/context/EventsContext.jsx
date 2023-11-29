@@ -1,7 +1,6 @@
 'use client';
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import { eventReducer } from '@/reducer/eventReducer';
-import { fetchEvents } from '@/service/fetchEvents';
 
 const initialState = {
   events: [],

@@ -10,29 +10,6 @@ export const eventReducer = (state, action) => {
         ...state,
         filteredEvents: action.payload,
       };
-    case 'SET_CITIES':
-      return {
-        ...state,
-        cities: action.payload,
-      };
-
-    case 'SET_CATEGORIES':
-      return {
-        ...state,
-        categories: action.payload,
-      };
-
-    case 'SET_SELECTED_CITY':
-      return {
-        ...state,
-        selectedCity: action.payload,
-      };
-
-    case 'SET_SELECTED_CATEGORY':
-      return {
-        ...state,
-        selectedCategory: action.payload,
-      };
 
     case 'SET_SELECTED_START_DATE':
       return {

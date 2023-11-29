@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Spinner from '@/components/Spinner';
 import EventSlider from '@/components/EventSlider';
 import { useEvents } from '@/context/EventsContext';
-import { fetchEvents } from '@/service/fetchEvents';
+import EventDetailsCard from '@/components/EventDetailsCard';
 
 const DynamicMap = dynamic(() => import('@/components/MapView'), {
   ssr: false,
@@ -33,7 +33,8 @@ const DetailsPage = ({ params }) => {
       }
     };
     fetchEvents();
-  }, [dispatch, params.id, state.events]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return state.loading ? (
     <Spinner />
@@ -44,29 +45,30 @@ const DetailsPage = ({ params }) => {
         <h1 className='font-bold text-2xl mb-2'>{event?.name}</h1>
         <p className='text-gray-700 text-lg'>{event?.description}</p>
       </div>
-      <div className='container p-3 mx-auto my-5 text-center
-        border-t-2 border-b-2 border-gray-300
+      <h1 className='font-bold text-2xl mb-2 text-center'>Ticket Prices</h1>
+      <div className='container p-5 mx-auto my-5 text-center grid grid-cols-2 gap-4 place-items-center 
+        border-b-2 border-t-2 border-gray-300 
       '>
-        <h1 className='font-bold text-2xl mb-2 text-center'>Date</h1>
-        <p className='text-gray-700 text-lg'>
-          {new Date(event?.start_date).toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
-        {/* Ticket Prices */}
-        <h1 className='font-bold text-2xl mb-2 text-center'>Ticket Prices</h1>
-        <p className='text-gray-700 text-lg'>
-          <p className='text-red-500 text-center'>
-            {event?.ticket_prices?.vip}$
-          </p>
-          <p className={'text-gray-700 text-center'}>
-            {event?.ticket_prices?.standard}$
-          </p>
-        </p>
+        <EventDetailsCard
+          type={'VIP'}
+          color={'red'}
+          price={event?.ticket_prices?.vip}
+          benefits={[
+            'VIP Entrance',
+            'VIP Lounge',
+            'Free Drinks',
+            'Free Food',
+            'Free Parking',
+          ]}
+        />
+        <EventDetailsCard
+          type={'Standard'}
+          color={'gray'}
+          price={event?.ticket_prices?.standard}
+          benefits={['Standard Entrance', 'Free Drinks']}
+        />
       </div>
+      <h1 className='font-bold text-2xl mb-2 text-center'>Location</h1>
       <DynamicMap
         latlong={[event?.location?.latitude, event?.location?.longitude]}
         popUp={event?.location?.address}

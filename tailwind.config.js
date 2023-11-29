@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import withMT from '@material-tailwind/react/utils/withMT';
+export default withMT({
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,11 +8,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors : {
-        'navbar' : '#161A30',
-        'filterbar' : '#1E2238',
+      colors: {
+        navbar: '#161A30',
+        filterbar: '#1E2238',
       },
     },
   },
   plugins: [],
-};
+});
