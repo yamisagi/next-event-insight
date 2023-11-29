@@ -22,6 +22,7 @@ const EventCard = ({ event }) => {
     const rating = Math.floor(Math.random() * 5) + 1;
     return rating.toFixed(1);
   };
+  const today = new Date();
 
   return (
     <Card className='w-full max-w-[26rem] h-full shadow-lg flex justify-between'>
@@ -138,6 +139,7 @@ const EventCard = ({ event }) => {
       </CardBody>
       <CardFooter className='pt-3'>
         <Button
+          disabled={new Date(event.start_date) < today}
           size='lg'
           fullWidth={true}
           onClick={() => {

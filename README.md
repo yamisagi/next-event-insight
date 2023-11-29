@@ -68,6 +68,24 @@
 - [x] Project Setup
 - [x] Clean up the project
 - [x] Create the Layout component & Navbar component
+- [x] Create the Event component
+- [x] Create the EventCard component
+- [x] Create the EventMap component
+- [x] Create the EventContent component
+- [x] Implement the Event Details page
+- [x] Create the Filter component
+- [x] Implement the Search feature
+- [x] Improve Date Filtering
+- [x] Fetching Events
+- [x] Create Context & Reducer for Events
+- [x] Dispatching Events
+- [x] Implementing the Event Details page with Context
+- [x] Disable Reservation Button if the event is Outdated
+- [x] Clean up the code
+- [x] Fix the Event Details page & Event Content
+- [x] Improve UI of the App
+- [x] Project Finished 🎉
+- [x] Deploy the project on Vercel 🚀
 
 
 <p align="center">(Still working on it...)</p>
