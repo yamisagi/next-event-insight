@@ -26,7 +26,8 @@ const initialState = {
   categories: ['Dance', 'Concert', 'Film', 'Theater'],
   selectedCity: '',
   selectedCategory: '',
-  selectedDate: '',
+  selectedStartDate: '',
+  selectedEndDate: '',
   lastDetailPage: '1',
   isFiltered: false,
 };

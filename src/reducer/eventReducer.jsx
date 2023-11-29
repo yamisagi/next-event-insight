@@ -34,10 +34,15 @@ export const eventReducer = (state, action) => {
         selectedCategory: action.payload,
       };
 
-    case 'SET_SELECTED_DATE':
+    case 'SET_SELECTED_START_DATE':
       return {
         ...state,
-        selectedDate: action.payload,
+        selectedStartDate: action.payload,
+      };
+    case 'SET_SELECTED_END_DATE':
+      return {
+        ...state,
+        selectedEndDate: action.payload,
       };
     case 'SET_LAST_DETAIL_PAGE':
       return {
