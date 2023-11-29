@@ -64,6 +64,12 @@ export const eventReducer = (state, action) => {
         selectedCategory: '',
         selectedDate: '',
       };
+
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: action.payload,
+      };
     default:
       return state;
   }

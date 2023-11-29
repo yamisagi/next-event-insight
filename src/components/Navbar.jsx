@@ -7,12 +7,13 @@ import { useState } from 'react';
 import SearchBar from './SearchBar';
 import { useEvents } from '@/context/EventsContext';
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Navbar = () => {
-  const {state} = useEvents();
+  const { state, dispatch } = useEvents();
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Details', href: `/details/${state.lastDetailPage}` },
@@ -26,7 +27,22 @@ const Navbar = () => {
             <div className='relative flex h-16 items-center lg:justify-evenly justify-between'>
               {/* // Logo */}
               <div className='flex cursor-pointer text-white mr-16'>
-                <Link href='/'>Logo</Link>
+                <Link
+                  href='/'
+                  onClick={() => {
+                    dispatch({ type: 'SET_LAST_DETAIL_PAGE', payload: '1' });
+                    dispatch({ type: 'SET_IS_FILTERED', payload: false });
+                    dispatch({ type: 'SET_SELECTED_START_DATE', payload: null });
+                    dispatch({ type: 'SET_SELECTED_END_DATE', payload: null });
+                  }}
+                >
+                  <Image
+                    src='/logo.png'
+                    alt='logo'
+                    width={100}
+                    height={200}
+                  />
+                </Link>
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center sm:hidden'>
                 <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>

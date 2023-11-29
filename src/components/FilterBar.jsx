@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import { useEvents } from '@/context/EventsContext';
+import DatePicker from './DatePicker';
+import SelectBox from './SelectBox';
 
 const FilterBar = ({ open }) => {
   const { state, dispatch } = useEvents();
@@ -57,6 +59,13 @@ const FilterBar = ({ open }) => {
       payload: filteredEventsbyDate,
     });
     dispatch({ type: 'SET_IS_FILTERED', payload: true });
+
+    // Reset the selected dates
+    setTimeout(() => {
+      dispatch({ type: 'SET_SELECTED_START_DATE', payload: '' });
+      dispatch({ type: 'SET_SELECTED_END_DATE', payload: '' });
+    }
+    , 5000);
   };
   const getCityFromAddress = (address) => address.split(', ')[2];
 
@@ -66,72 +75,37 @@ const FilterBar = ({ open }) => {
     md:w-3/4 lg:w-2/3  mx-auto  md:my-4 md:rounded-md md:shadow-md 
     '
     >
-      <div className='flex-grow flex flex-col items-center mb-1 md:flex-row sm:flex-col'>
-        <label className='text-gray-300 font-light text-sm mr-2 mb-1 md:mb-0'>
-          Categories
-        </label>
-        <select
-          className='border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-1'
-          onChange={(e) => filterEventsByCategory(e.target.value)}
-        >
-          <option value=''>Select a Category</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className='flex flex-col grow items-center mb-1 md:flex-row sm:flex-col'>
-        <label className='text-gray-300 font-light text-sm mr-2 mb-1 md:mb-0'>
-          Cities
-        </label>
-        <select
-          className='border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-1'
-          onChange={(e) => filterEventsByCity(e.target.value)}
-        >
-          <option value=''>Select a City</option>
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className='flex flex-col items-center gap-4 md:flex-row sm:flex-col'>
-        <label className='text-gray-300 font-light text-sm mr-2 mb-1 md:mb-0'>
-          Date
-        </label>
-        <input
-          type='date'
-          onChange={(e) => {
-            dispatch({
-              type: 'SET_SELECTED_START_DATE',
-              payload: e.target.value,
-            });
-            console.log(e.target.value);
-          }}
-          className='border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-1'
-        />
-      </div>
-      <div className='flex flex-col items-center gap-4 md:flex-row sm:flex-col'>
-        <label className='text-gray-300 font-light text-sm mx-2 mb-1 md:mb-0'>
-          To
-        </label>
-        <input
-          onChange={(e) => {
-            dispatch({
-              type: 'SET_SELECTED_END_DATE',
-              payload: e.target.value,
-            });
-            filterEventsByDate();
-          }}
-          type='date'
-          className='border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-1'
-        />
-      </div>
+      <SelectBox
+        title={'Category'}
+        onChange={(e) => filterEventsByCategory(e.target.value)}
+        typeList={categories}
+      />
+      <SelectBox
+        title={'City'}
+        onChange={(e) => filterEventsByCity(e.target.value)}
+        typeList={cities}
+      />
+      <DatePicker
+        title={'From'}
+        value={state.selectedStartDate}
+        onChange={(e) => {
+          dispatch({
+            type: 'SET_SELECTED_START_DATE',
+            payload: e.target.value,
+          });
+        }}
+      />
+      <DatePicker
+        title={'To'}
+        value={state.selectedEndDate} 
+        onChange={(e) => {
+          dispatch({
+            type: 'SET_SELECTED_END_DATE',
+            payload: e.target.value,
+          });
+          filterEventsByDate();
+        }}
+      />
     </div>
   ) : null;
 };

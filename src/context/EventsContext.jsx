@@ -1,7 +1,7 @@
 'use client';
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import { eventReducer } from '@/reducer/eventReducer';
-import { data } from '@/__mocks__/data';
+import { fetchEvents } from '@/service/fetchEvents';
 
 const initialState = {
   events: [],
@@ -30,6 +30,7 @@ const initialState = {
   selectedEndDate: '',
   lastDetailPage: '1',
   isFiltered: false,
+  loading: true,
 };
 
 export const EventsContext = createContext();
@@ -37,11 +38,20 @@ export const EventsContext = createContext();
 const EventsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(eventReducer, initialState);
   useEffect(() => {
-    const fetchEvents = () => {
-      dispatch({ type: 'SET_EVENTS', payload: data });
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_API_KEY
+        );
+        const data = await res.json();
+        console.log(data);
+        dispatch({ type: 'SET_LOADING', payload: false });
+        dispatch({ type: 'SET_EVENTS', payload: data });
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchEvents();
-    console.log('We are fetching events');
   }, [state.isFiltered]);
 
   return (
