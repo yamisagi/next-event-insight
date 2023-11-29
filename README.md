@@ -6,7 +6,7 @@
   <h2 align="center">Next Event Insight</h2>
 
   <p align="center">
-    In this project, I will be building a Next.js app that will show the upcoming events and the latest news about the event. I will be using the Custom API to fetch the data and display it on the app. I will be using the Tailwind CSS framework to style the app.
+    In this project, I will be building a Next.js app that will show the upcoming events and the out dated events. And you can search for the events by title or filter them by cities, categories, starting date, and ending date. I will be using the Custom API to fetch the data and display it on the app. I will be using the Tailwind CSS framework to style the app.
     <br />
   </p>
 
@@ -61,7 +61,7 @@
 https://github.com/yamisagi/next-event-insight/assets/84624853/f1e4c752-fa70-4712-b350-311385ca8f29
 
 
- This project is a Next.js app that will show the upcoming events and the latest news about the event. I will be using the Custom API to fetch the data and display it on the app. I will be using the Tailwind CSS framework to style the app. And it is for Erciyes Bootcamp graduation project.
+ This project is a Next.js app that will show the upcoming events and the out dated events. And you can search for the events by title or filter them by cities, categories, starting date, and ending date. I will be using the Custom API to fetch the data and display it on the app. I will be using the Tailwind CSS framework to style the app. And it is for Erciyes Bootcamp graduation project.
 
 
 
@@ -91,8 +91,7 @@ https://github.com/yamisagi/next-event-insight/assets/84624853/f1e4c752-fa70-471
 - [x] Project Finished 🎉
 - [x] Deploy the project on Vercel 🚀
 
-
-<p align="center">(Still working on it...)</p>
+<br/>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
