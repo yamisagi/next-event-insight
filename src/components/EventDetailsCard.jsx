@@ -27,9 +27,15 @@ function CheckIcon() {
   );
 }
 
-const EventDetailsCard = ({ type, price, benefits,color }) => {
+const EventDetailsCard = ({ type, price, benefits, color, event }) => {
+  const today = new Date();
+
   return (
-    <Card color={color} variant='gradient' className='w-full max-w-[20rem] h-full flex justify-between p-8'>
+    <Card
+      color={color}
+      variant='gradient'
+      className='w-full max-w-[20rem] h-full flex justify-between p-8'
+    >
       <CardHeader
         floated={false}
         shadow={false}
@@ -59,7 +65,9 @@ const EventDetailsCard = ({ type, price, benefits,color }) => {
               <span className='rounded-full border border-white/20 bg-white/20 p-1'>
                 <CheckIcon />
               </span>
-              <Typography className='font-normal text-left'>{benefit}</Typography>
+              <Typography className='font-normal text-left'>
+                {benefit}
+              </Typography>
             </li>
           ))}
         </ul>
@@ -71,6 +79,7 @@ const EventDetailsCard = ({ type, price, benefits,color }) => {
           className='hover:scale-[1.02] focus:scale-[1.02] active:scale-100'
           ripple={false}
           fullWidth={true}
+          disabled={today > new Date(event?.end_date)}
         >
           Buy Now
         </Button>

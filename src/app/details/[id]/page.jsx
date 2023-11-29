@@ -60,12 +60,14 @@ const DetailsPage = ({ params }) => {
             'Free Food',
             'Free Parking',
           ]}
+          event={event}
         />
         <EventDetailsCard
           type={'Standard'}
           color={'gray'}
           price={event?.ticket_prices?.standard}
           benefits={['Standard Entrance', 'Free Drinks']}
+          event={event}
         />
       </div>
       <h1 className='font-bold text-2xl mb-2 text-center'>Location</h1>
