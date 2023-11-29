@@ -9,8 +9,6 @@ import SearchBar from './SearchBar';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Details', href: '/details' },
-  { name: 'Projects', href: '#' },
-  { name: 'Calendar', href: '#' },
 ];
 
 function classNames(...classes) {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const MapView = ({ latlong = [38.73, 35.46] }) => {
+const MapView = ({ latlong = [38.73, 35.46] , popUp}) => {
   return (
     <div
       id='map'
@@ -21,7 +21,7 @@ const MapView = ({ latlong = [38.73, 35.46] }) => {
         />
 
         <Marker position={latlong}>
-          <Popup>Hello</Popup>
+          <Popup>{popUp}</Popup>
         </Marker>
       </MapContainer>
     </div>
