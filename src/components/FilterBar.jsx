@@ -2,9 +2,9 @@ import React from 'react';
 
 const FilterBar = ({ open }) => {
   return open ? (
-    <div className='flex flex-row justify-between items-center w-full h-16 px-6 bg-filterbar'>
-      <div className='flex flex-row w-2/6 justify-between items-center'>
-        <div className='flex grow flex-row items-center'>
+    <div className='flex md:flex-row sm:flex-col items-center w-full h-16 px-6 bg-filterbar'>
+      <div className='flex flex-row w-2/6 justify-between items-center flex-wrap p-2'>
+        <div className='flex grow flex-row items-center mb-1'>
           <label className='text-gray-300 font-light text-sm mr-2'>
             Categories
           </label>

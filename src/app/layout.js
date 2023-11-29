@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import './globals.css';
+import EventsProvider from '@/context/EventsContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,10 +27,12 @@ export default function RootLayout({ children }) {
           async
         ></script>
       </head>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      </body>
+      <EventsProvider>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+        </body>
+      </EventsProvider>
     </html>
   );
 }

@@ -3,11 +3,11 @@ import EventSlider from '@/components/EventSlider';
 import FilterBar from '@/components/FilterBar';
 import React from 'react';
 import { data } from '@/__mocks__/data';
-import EventsProvider from '@/context/EventsContext';
+
 
 export default function Home() {
   return (
-    <EventsProvider>
+
       <main>
         <FilterBar open={true} />
         <EventSlider events={data} />
@@ -19,6 +19,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </EventsProvider>
+
   );
 }

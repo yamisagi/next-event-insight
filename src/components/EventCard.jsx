@@ -4,24 +4,27 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useEvents } from '@/context/EventsContext';
 
 const EventCard = ({ event }) => {
   const router = useRouter();
+  const { dispatch } = useEvents();
   return (
     <div
       className='max-w-sm h-[600px] rounded overflow-hidden shadow-lg md:w-64 m-5'
       onClick={() => {
         router.push(`/details/${event.id}`);
+        dispatch({ type: 'SET_LAST_DETAIL_PAGE', payload: event.id });
       }}
     >
-        <Image
-          src={event.images[0]}
-          alt={event.name}
-          width={200}
-          height={200}
-          content='center'
-          className='w-full h-48 object-cover'
-        />
+      <Image
+        src={event.images[0]}
+        alt={event.name}
+        width={200}
+        height={200}
+        content='center'
+        className='w-full h-48 object-cover'
+      />
       <div className='px-6 py-4'>
         <div className='font-bold text-xl mb-2'>{event.name}</div>
         <p className='text-gray-700 text-base'>

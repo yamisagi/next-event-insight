@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const SearchBar = () => {
   return (
-    <div className='lg:flex flex-row justify-between sm:ml-6'>
+    <div className='w-[160px] lg:flex flex-row justify-between sm:ml-6 place-items-center'>
       <div className='flex'>
         <div className='relative'>
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>

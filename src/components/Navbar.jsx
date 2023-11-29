@@ -5,16 +5,18 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useState } from 'react';
 import SearchBar from './SearchBar';
-
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Details', href: '/details' },
-];
+import { useEvents } from '@/context/EventsContext';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+
 const Navbar = () => {
+  const {state} = useEvents();
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Details', href: `/details/${state.lastDetailPage}` },
+  ];
   const [current, setCurrent] = useState('Home');
   return (
     <Disclosure as='nav' className='bg-navbar'>

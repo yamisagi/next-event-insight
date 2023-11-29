@@ -13,12 +13,12 @@ const DetailsPage = ({ params }) => {
   const event = data.find((event) => event.id === Number(params.id));
   const filtered = data.filter((event) => event.id === Number(params.id));
   return (
-    <main className='flex flex-col justify-center items-center w-full h-screen'>
+    <main className='flex flex-col justify-center items-center w-full'>
       <EventSlider events={filtered} isDetailed={true} />
 
       <div className='container p-3 mx-auto my-5 text-center'>
-        <h1 className='font-bold text-xl mb-2'>{event.name}</h1>
-        <p className='text-gray-700 text-base'>{event.description}</p>
+        <h1 className='font-bold text-2xl mb-2'>{event.name}</h1>
+        <p className='text-gray-700 text-lg'>{event.description}</p>
       </div>
       <DynamicMap
         latlong={[event.location.latitude, event.location.longitude]}
