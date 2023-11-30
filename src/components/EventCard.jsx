@@ -24,6 +24,7 @@ import {
   StarIcon,
   WifiIcon,
 } from '@/constants/icons';
+import Link from 'next/link';
 
 const EventCard = ({ event }) => {
   const { dispatch } = useEvents();
@@ -110,27 +111,33 @@ const EventCard = ({ event }) => {
         <div className='flex flex-row justify-center items-center gap-2 mb-2'>
           <IconButton
             color='blue'
-            variant='outline'
+            variant='gradient'
             size='regular'
-            ripple='light'
+            ripple={true}
           >
-            <FacebookIcon />
+            <Link href='https://www.facebook.com/' target='_blank'>
+              <FacebookIcon />
+            </Link>
           </IconButton>
           <IconButton
             color='gray'
-            variant='outline'
+            variant='gradient'
             size='regular'
-            ripple='light'
+            ripple={true}
           >
-            <TwitterIcon />
+            <Link href='https://twitter.com/' target='_blank'>
+              <TwitterIcon />
+            </Link>
           </IconButton>
           <IconButton
             color='red'
-            variant='outline'
+            variant='gradient'
             size='regular'
-            ripple='light'
+            ripple={true}
           >
-            <InstagramIcon />
+            <Link href='https://www.instagram.com/' target='_blank'>
+              <InstagramIcon />
+            </Link>
           </IconButton>
         </div>
 
