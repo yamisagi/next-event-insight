@@ -19,7 +19,7 @@ export default function Home() {
           {state.filterBarOpen && <FilterBar />}
           <EventSlider events={state.events} />
           <div className='container mx-auto bg-cover bg-center h-96'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-2 mx-auto'>
+            <div className='event-page'>
               {/* We could filter events by date but user may want to see out dated */}
               {state.isFiltered
                 ? state.filteredEvents.map((event, index) => (
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
             {/* Out Dated Events */}
             {!state.isFiltered && (
-              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-2 mx-auto my-12'>
+              <div className='event-page'>
                 <h1 className='col-span-full text-2xl font-bold text-center text-black'>
                   Out Dated Events
                 </h1>

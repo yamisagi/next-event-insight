@@ -52,6 +52,11 @@ export const eventReducer = (state, action) => {
         ...state,
         filterBarOpen: action.payload,
       };
+      case 'SET_LAST_PLACE_PAGE':
+        return {
+          ...state,
+          lastPlacePage: action.payload,
+        };
     default:
       return state;
   }

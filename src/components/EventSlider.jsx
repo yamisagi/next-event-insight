@@ -12,11 +12,7 @@ const EventSlider = ({ events, isDetailed }) => {
   const router = useRouter();
   const { dispatch } = useEvents();
   return (
-    <div
-      className='container mx-auto my-5
-        px-14
-    '
-    >
+    <div className='container mx-auto my-5 px-14'>
       <Swiper
         effect={'cards'}
         grabCursor={true}
@@ -28,13 +24,13 @@ const EventSlider = ({ events, isDetailed }) => {
         centeredSlides={true}
         centeredSlidesBounds={true}
         modules={[EffectCards]}
-        className='flex flex-col justify-center items-center  w-8/12 sm:w-6/12 h-96'
+        className='swiper'
       >
         {events.map((event) => (
           <div key={event.id}>
             <SwiperSlide
               zoom={true}
-              className='relative bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg'
+              className='swiper-slide'
               effect='cards'
               content='center'
               onClick={() => {
@@ -56,7 +52,7 @@ const EventSlider = ({ events, isDetailed }) => {
             {isDetailed && (
               <SwiperSlide
                 zoom={true}
-                className='relative bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg'
+                className='swiper-slide'
                 effect='cards'
                 content='center'
               >

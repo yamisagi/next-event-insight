@@ -6,7 +6,7 @@ const MapView = ({ latlong = [38.73, 35.46] , popUp}) => {
   return (
     <div
       id='map'
-      className='flex flex-col justify-center items-center max-w-2xl max-h-60 h-44 mx-auto my-10 bg-white rounded-lg shadow-xl p-4'
+      className='map-view'
     >
       <MapContainer
         className='w-full h-full rounded-lg'

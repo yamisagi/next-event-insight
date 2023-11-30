@@ -70,9 +70,7 @@ const FilterBar = () => {
 
   return (
     <div
-      className='bg-filterbar grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:p-8 place-items-center w-full 
-    md:w-3/4 lg:w-2/3  mx-auto  md:my-4 md:rounded-md md:shadow-md 
-    '
+      className='filter-bar'
     >
       <SelectBox
         title={'Category'}

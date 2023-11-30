@@ -31,6 +31,7 @@ const initialState = {
   isFiltered: false,
   loading: true,
   filterBarOpen: false,
+  lastPlacePage: '',
 };
 
 export const EventsContext = createContext();
