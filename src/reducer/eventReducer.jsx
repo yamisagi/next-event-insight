@@ -31,7 +31,6 @@ export const eventReducer = (state, action) => {
         ...state,
         isFiltered: action.payload,
       };
-
     case 'CLEAR_FILTERS':
       return {
         ...state,
@@ -39,9 +38,10 @@ export const eventReducer = (state, action) => {
         filteredEvents: [],
         selectedCity: '',
         selectedCategory: '',
-        selectedDate: '',
+        selectedStartDate: '',
+        selectedEndDate: '',
+        filterBarOpen: false,
       };
-
     case 'SET_LOADING':
       return {
         ...state,
@@ -52,11 +52,26 @@ export const eventReducer = (state, action) => {
         ...state,
         filterBarOpen: action.payload,
       };
-      case 'SET_LAST_PLACE_PAGE':
-        return {
-          ...state,
-          lastPlacePage: action.payload,
-        };
+    case 'SET_LAST_PLACE_PAGE':
+      return {
+        ...state,
+        lastPlacePage: action.payload,
+      };
+    case 'SET_SELECTED_CITY':
+      return {
+        ...state,
+        selectedCity: action.payload,
+      };
+    case 'SET_SELECTED_CATEGORY':
+      return {
+        ...state,
+        selectedCategory: action.payload,
+      };
+    case 'SET_CURRENT_NAV':
+      return {
+        ...state,
+        currentNav: action.payload,
+      };
     default:
       return state;
   }

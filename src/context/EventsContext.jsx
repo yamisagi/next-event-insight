@@ -27,11 +27,12 @@ const initialState = {
   selectedCategory: '',
   selectedStartDate: '',
   selectedEndDate: '',
-  lastDetailPage: '1',
+  lastDetailPage: '1', // Default to page 1
   isFiltered: false,
   loading: true,
   filterBarOpen: false,
-  lastPlacePage: '',
+  lastPlacePage: 'Rock Arena', // Default to Rock Arena
+  currentNav: 'Home',
 };
 
 export const EventsContext = createContext();

@@ -33,7 +33,7 @@ const DetailsPage = ({ params }) => {
       }
     };
     fetchEvents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return state.loading ? (
@@ -45,10 +45,16 @@ const DetailsPage = ({ params }) => {
         <h1 className='font-bold text-2xl mb-2'>{event?.name}</h1>
         <p className='text-gray-700 text-lg'>{event?.description}</p>
       </div>
-      <h1 className='font-bold text-2xl mb-2 text-center'>Ticket Prices</h1>
-      <div className='container p-5 mx-auto my-5 text-center grid grid-cols-2 gap-4 place-items-center 
-        border-b-2 border-t-2 border-gray-300 
-      '>
+      <h1 className='font-bold text-2xl mb-2 text-center'>
+        Ticket Prices for {event?.name} on{' '}
+        {new Date(event?.start_date).toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </h1>
+      <div className='flex flex-col items-center md:flex-row justify-center md:items-stretch w-full gap-5 p-5 mx-auto my-5 text-center'>
         <EventDetailsCard
           type={'VIP'}
           color={'red'}
@@ -70,11 +76,15 @@ const DetailsPage = ({ params }) => {
           event={event}
         />
       </div>
-      <h1 className='font-bold text-2xl mb-2 text-center'>Location</h1>
-      <DynamicMap
-        latlong={[event?.location?.latitude, event?.location?.longitude]}
-        popUp={event?.location?.address}
-      />
+      <div className='flex flex-col justify-center items-center w-full p-5 mx-auto my-5 text-center'>
+        <h1 className='font-bold text-2xl mb-2 text-center'>Location</h1>
+        <>
+          <DynamicMap
+            latlong={[event?.location?.latitude, event?.location?.longitude]}
+            popUp={event?.location?.address}
+          />
+        </>
+      </div>
     </main>
   );
 };

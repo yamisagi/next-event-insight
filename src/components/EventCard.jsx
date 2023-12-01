@@ -102,6 +102,10 @@ const EventCard = ({ event }) => {
               type: 'SET_LAST_PLACE_PAGE',
               payload: `${event.location.address.split(', ')[0]}`,
             });
+            dispatch({
+              type: 'SET_CURRENT_NAV',
+              payload: 'Place',
+            });
           }}
         >
           {event.location.address.split(', ')[2]}
@@ -148,6 +152,14 @@ const EventCard = ({ event }) => {
           onClick={() => {
             router.push(`/details/${event.id}`);
             dispatch({ type: 'SET_LAST_DETAIL_PAGE', payload: event.id });
+            dispatch({
+              type: 'SET_LAST_PLACE_PAGE',
+              payload: `${event.location.address.split(', ')[0]}`,
+            });
+            dispatch({
+              type: 'SET_CURRENT_NAV',
+              payload: 'Details',
+            });
           }}
         >
           Reserve

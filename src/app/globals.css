@@ -35,9 +35,11 @@ body {
   .swiper-slide {
     @apply relative bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg;
   }
+  .filter-container {
+    @apply bg-filterbar flex flex-col  items-center w-full md:w-3/4 lg:w-2/3 mx-auto md:my-4 md:rounded-md md:shadow-md p-4;
+  }
   .filter-bar {
-    @apply bg-filterbar grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:p-8 place-items-center w-full 
-    md:w-3/4 lg:w-2/3  mx-auto  md:my-4 md:rounded-md md:shadow-md;
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-4 mb-2 place-items-center w-full;
   }
   .map-view {
     @apply flex flex-col justify-center items-center max-w-2xl max-h-60 h-44 mx-auto my-10 bg-white rounded-lg shadow-xl p-4;
@@ -46,10 +48,13 @@ body {
     @apply relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white;
   }
   .search-bar {
-    @apply w-[160px] flex justify-between place-items-center;
+    @apply w-[160px] md:w-[240px] flex justify-between place-items-center;
   }
   .search-input {
     @apply block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+  }
+  .mobile-nav-buttons {
+    @apply block align-middle select-none font-sans font-bold text-left uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tr text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85];
   }
 }
 

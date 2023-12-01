@@ -16,7 +16,7 @@ const EventDetailsCard = ({ type, price, benefits, color, event }) => {
     <Card
       color={color}
       variant='gradient'
-      className='w-full max-w-[20rem] h-full flex justify-between p-8'
+      className='w-full max-w-[20rem] flex justify-between p-8'
     >
       <CardHeader
         floated={false}

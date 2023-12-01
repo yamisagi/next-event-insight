@@ -3,17 +3,18 @@ import Image from 'next/image';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { useState } from 'react';
 import SearchBar from './SearchBar';
 import { useEvents } from '@/context/EventsContext';
 import GradientButton from './ProjectButton';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Navbar = () => {
+  const params = usePathname();
   const { state, dispatch } = useEvents();
   const navigation = [
     { name: 'Home', href: '/' },
@@ -21,7 +22,17 @@ const Navbar = () => {
     { name: 'Place', href: `/place/${state.lastPlacePage}` },
   ];
   const router = useRouter();
-  const [current, setCurrent] = useState('Home');
+  useEffect(() => {
+    const capitalizedPath = params.split('/')[1];
+    const capitalized =
+      capitalizedPath === ''
+        ? 'Home'
+        : capitalizedPath.charAt(0).toUpperCase() + capitalizedPath.slice(1);
+
+    console.log(capitalized);
+    dispatch({ type: 'SET_CURRENT_NAV', payload: capitalized });
+  }, [dispatch, params]);
+
   return (
     <Disclosure as='nav' className='bg-navbar'>
       {({ open }) => (
@@ -33,19 +44,14 @@ const Navbar = () => {
                 <Link
                   href='/'
                   onClick={() => {
-                    dispatch({ type: 'SET_LAST_DETAIL_PAGE', payload: '1' });
-                    dispatch({ type: 'SET_IS_FILTERED', payload: false });
-                    dispatch({
-                      type: 'SET_SELECTED_START_DATE',
-                      payload: null,
-                    });
-                    dispatch({ type: 'SET_SELECTED_END_DATE', payload: null });
+                    dispatch({ type: 'SET_CURRENT_NAV', payload: 'Home' });
+                    dispatch({ type: 'CLEAR_FILTERS' });
                   }}
                 >
                   <Image src='/logo.png' alt='logo' width={200} height={200} />
                 </Link>
               </div>
-              <div className='absolute inset-y-0 right-0 flex items-center sm:hidden'>
+              <div className='absolute inset-y-0 right-2 flex items-center sm:hidden'>
                 <Disclosure.Button className='nav-mobile-button'>
                   <span className='absolute -inset-0.5' />
                   <span className='sr-only'>Open main menu</span>
@@ -80,10 +86,15 @@ const Navbar = () => {
                       <GradientButton
                         key={item.name}
                         type={'gradient'}
-                        color={current === item.name ? 'gray' : 'blue-gray'}
+                        color={
+                          state.currentNav === item.name ? 'gray' : 'blue-gray'
+                        }
                         text={item.name}
                         onClick={() => {
-                          setCurrent(item.name);
+                          dispatch({
+                            type: 'SET_CURRENT_NAV',
+                            payload: item.name,
+                          });
                           router.push(item.href);
                         }}
                       />
@@ -99,16 +110,18 @@ const Navbar = () => {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  onClick={() => setCurrent(item.name)}
+                  onClick={() => {
+                    dispatch({ type: 'SET_CURRENT_NAV', payload: item.name });
+                  }}
                   as={Link}
                   href={item.href}
                   className={classNames(
-                    current === item.name
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    state.currentNav === item.name
+                      ? 'bg-[#78909c] text-white'
+                      : 'text-gray-300 hover:bg-[#6699cc] hover:text-white',
+                    'mobile-nav-buttons'
                   )}
-                  aria-current={current ? 'page' : undefined}
+                  aria-current={state.currentNav ? 'page' : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
